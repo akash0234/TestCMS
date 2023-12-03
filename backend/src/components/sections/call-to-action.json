@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_call_to_actions",
+  "info": {
+    "displayName": "call to action"
+  },
+  "options": {},
+  "attributes": {
+    "CtaText": {
+      "type": "text"
+    }
+  }
+}
