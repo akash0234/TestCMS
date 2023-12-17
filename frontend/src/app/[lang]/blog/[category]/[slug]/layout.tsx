@@ -6,18 +6,17 @@ async function fetchSideMenuData(filter: string) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     const options = { headers: { Authorization: `Bearer ${token}` } };
 
-    const categoriesResponse = await fetchAPI(
-      "/categories",
+    const articleCategoriesResponse = await fetchAPI(
+      "/article-categories",
       { populate: "*" },
       options
     );
-
     const articlesResponse = await fetchAPI(
       "/articles",
       filter
         ? {
             filters: {
-              category: {
+              articleCategory: {
                 name: filter,
               },
             },
@@ -28,20 +27,32 @@ async function fetchSideMenuData(filter: string) {
 
     return {
       articles: articlesResponse.data,
-      categories: categoriesResponse.data,
+      articleCategories: articleCategoriesResponse.data,
     };
   } catch (error) {
     console.error(error);
   }
 }
 
-interface Category {
+
+interface articleCategory {
   id: number;
   attributes: {
-    name: string;
+    categoryName: string;
+    categoryIcon: Picture;
     slug: string;
     articles: {
       data: Array<{}>;
+    };
+  };
+}
+interface Picture {
+  data: {
+    id: string;
+    attributes: {
+      url: string;
+      name: string;
+      alternativeText: string;
     };
   };
 }
@@ -56,7 +67,7 @@ interface Article {
 
 interface Data {
   articles: Article[];
-  categories: Category[];
+  articleCategories: articleCategory[];
 }
 
 export default async function LayoutRoute({
@@ -66,11 +77,11 @@ export default async function LayoutRoute({
   children: React.ReactNode;
   params: {
     slug: string;
-    category: string;
+    articleCategory: string;
   };
 }) {
-  const { category } = params;
-  const { categories, articles } = (await fetchSideMenuData(category)) as Data;
+  const { articleCategory } = params;
+  const { articleCategories, articles } = (await fetchSideMenuData(articleCategory)) as Data;
 
   return (
     <section className="container p-8 mx-auto space-y-6 sm:space-y-12">
@@ -78,7 +89,7 @@ export default async function LayoutRoute({
         <div className="col-span-2">{children}</div>
         <aside>
           <ArticleSelect
-            categories={categories}
+            articleCategories={articleCategories}
             articles={articles}
             params={params}
           />
@@ -95,7 +106,7 @@ export async function generateStaticParams() {
   const articleResponse = await fetchAPI(
     path,
     {
-      populate: ["category"],
+      populate: ["articleCategory"],
     },
     options
   );
@@ -104,10 +115,10 @@ export async function generateStaticParams() {
     (article: {
       attributes: {
         slug: string;
-        category: {
+        articleCategory: {
           slug: string;
         };
       };
-    }) => ({ slug: article.attributes.slug, category: article.attributes.slug })
+    }) => ({ slug: article.attributes.slug, articleCategory: article.attributes.slug })
   );
 }

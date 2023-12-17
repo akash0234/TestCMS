@@ -18,7 +18,7 @@ interface Article {
         };
       };
     };
-    category: {
+    articleCategory : {
       data: {
         attributes: {
           name: string;
@@ -58,7 +58,7 @@ export default function PostList({
             article.attributes.cover.data?.attributes.url
           );
 
-          const category = article.attributes.category.data?.attributes;
+          const category = article.attributes.articleCategory.data?.attributes;
           const authorsBio = article.attributes.authorsBio.data?.attributes;
 
           const avatarUrl = getStrapiMedia(

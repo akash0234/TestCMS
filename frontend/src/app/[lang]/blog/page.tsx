@@ -21,6 +21,7 @@ export default function Profile() {
 
   const fetchData = useCallback(async (start: number, limit: number) => {
     setLoading(true);
+    console.log('sad')
     try {
       const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
       const path = `/articles`;
@@ -28,19 +29,21 @@ export default function Profile() {
         sort: { createdAt: "desc" },
         populate: {
           cover: { fields: ["url"] },
-          category: { populate: "*" },
+          articleCategory: { populate: "*" },
           authorsBio: {
             populate: "*",
           },
+
         },
         pagination: {
           start: start,
           limit: limit,
         },
       };
+   
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
-
+      console.log(responseData);
       if (start === 0) {
         setData(responseData.data);
       } else {

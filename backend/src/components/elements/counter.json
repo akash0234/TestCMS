@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_elements_counters",
+  "info": {
+    "displayName": "Counter",
+    "icon": "chartBubble",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

@@ -1,16 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,800;1,100;1,200;1,400;1,600;1,800&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://v1.fontapi.ir/css/SFProDisplay');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import "react-slideshow-image/dist/styles.css";
 
+
 body {
-  @apply dark:bg-black
+  @apply dark:bg-black;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.font-sf-pro {
+  font-family: 'SF Pro Display', sans-serif;
+
 }
 
 
 /******************************************* 
   Rich Text Styles
-*******************************************/ 
+*******************************************/
 
 /* Headers */
 .rich-text h1 {
@@ -82,17 +95,17 @@ body {
   @apply mb-2;
 }
 
-.rich-text li > ul {
+.rich-text li>ul {
   @apply list-disc pl-4 mb-2;
 }
 
-.rich-text li > ol {
+.rich-text li>ol {
   @apply list-decimal pl-4 mb-2;
 }
 
 /* Code blocks */
 .rich-text pre {
-  @apply font-mono bg-gray-900 text-gray-100 rounded p-4  my-6;
+  @apply font-mono bg-gray-900 text-gray-100 rounded p-4 my-6;
 }
 
 .rich-text code {
@@ -122,10 +135,57 @@ body {
   @apply bg-yellow-100 border-yellow-500 text-yellow-700 px-4 py-2 rounded-lg mb-4;
 }
 
+.sectionTitle {
+  @apply lg:text-[18px]
+}
+
+.sectionSubTitle {
+  @apply lg:text-[48px]
+}
+
+a.primary, a.secondary {
+  font-size: 16px;
+  padding: 12px 25px;
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: .3s;
+  /*font-family: 'Sweet Sans Pro', sans-serif;*/
+  text-align: center;
+  text-decoration: none
+}
+
+a.primary {
+  background-color: #fff;
+  color: #3C0000;
+  border: 1px solid #3C0000;
+  background-color: #FAFAFA;
+}
+
+a.primary:hover {
+  background-color: #3C0000;
+  color: #fff;
+  border: 1px solid #3C0000;
+  border-radius: 0px;
+}
+
+a.secondary {
+  background: #3C0000;
+  color: #fff;
+  border-radius: 0;
+  border: none;
+  transition: all ease .3s;
+  border: 1px solid #3C0000;
+}
+
+a.secondary:hover {
+  background-color: #ffffff;
+  color: #3C0000;
+  border-color: #3C0000
+}
 
 /******************************************* 
   React Slideshow Styles
-*******************************************/   
+*******************************************/
 
 .react-slideshow-container [aria-label="Previous Slide"] {
   margin-left: 1rem;
@@ -133,4 +193,259 @@ body {
 
 .react-slideshow-container [aria-label="Next Slide"] {
   margin-right: 1rem;
+}
+.mobile-logo{
+  max-width: 200px;
+}
+/*Hero*/
+@media (min-width : 1024px)
+{
+  .banner-image {
+    height: calc(100vh);
+  }
+}
+
+
+/*features*/
+.features .container-bg {
+  @apply bg-[#fff]
+}
+
+.features .card-container {
+  
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, .35) 0 5px 15px;
+}
+@media (min-width:1024px){
+  .features .card-container {
+  
+    margin-top: -250px;
+  }
+ 
+}
+
+.features .card-content {
+  background-color: #fff;
+  padding: 45px 30px;
+  border-right: 1px dashed #d3d3d3;
+}
+
+.features .card-content .card-body {
+  text-align: center;
+}
+
+.features .featurehr {
+  height: 2px;
+  /* Set the height to 2 pixels */
+  background-color: #000;
+  /* Set the color of the horizontal line */
+  border: none;
+  /* Remove the default border */
+  margin: 30px auto;
+  /* Add margin for spacing */
+  width: 50%;
+}
+
+
+/*Innovation*/
+
+section.innovation .sectionTitleHr {
+  height: 2px;
+  /* Set the height to 2 pixels */
+  background-color: #4A4A4A;
+  /* Set the color of the horizontal line */
+  border: none;
+  /* Remove the default border */
+  margin: 30px auto;
+  /* Add margin for spacing */
+  width: 120px;
+}
+
+section.innovation .feature-text {
+  color: #4A4A4A;
+  text-align: center;
+  line-height: 24px;
+  font-size: 18px;
+}
+
+section.innovation .section-btn {
+  @apply ms-[40px] mt-[30px]
+}
+
+section.innovation ul li {
+  font-size: 26px;
+  color: #4A4A4A;
+  /* line-height: 1.7; */
+  padding-left: 40px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+section.innovation .imgContainer {
+  @apply 2xl:max-h-[450px]
+}
+
+section.innovation .imgContainer img {
+  @apply transform lg:translate-x-[-160px] lg:translate-y-[10px] lg:w-[1000px] lg:h-[1000px]
+}
+
+
+section.innovation ul li::after {
+  font-family: 'Material Icons';
+  content: "\e5e1";
+  -webkit-font-feature-settings: 'liga';
+  color: #3C0000;
+  font-size: 26px;
+  top: 0px;
+  font-weight: 900;
+  left: 0;
+  position: absolute;
+}
+
+/*shop slider*/
+.shopCtaSlider img {
+  width: 100%;
+}
+
+.shopCtaSlider h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  margin: 20px 0px;
+  position: relative;
+}
+
+.shopCtaSlider p {
+  padding: 0px 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #414141;
+  position: relative;
+  text-align: center;
+  height: 150px !important;
+}
+
+.shopCtaSlider .card-content:hover {
+  background: #FAFAFA;
+  transition: all ease .3s;
+  padding-bottom: 30px;
+}
+
+
+.shopCtaSlider .card-content img,
+.shopCtaSlider .card-content {
+  transition: all ease .3s;
+}
+
+.shopCtaSlider .card-content:hover img {
+  transform: scale(1.1);
+
+}
+
+.shopCtaSlider .card-content .card-body {
+  text-align: center;
+
+}
+
+.shopCtaSlider .card-content .featurehr {
+  display: none;
+
+}
+
+.shopCtaSlider .card-content:hover .card-body {
+  margin-top: 40px;
+
+}
+
+
+
+/*inspiration*/
+section.inspiration .imgContainer img {
+  width: 100%;
+}
+
+section.inspiration .sectionTitleHr {
+  height: 2px;
+  /* Set the height to 2 pixels */
+  background-color: #4A4A4A;
+  /* Set the color of the horizontal line */
+  border: none;
+  /* Remove the default border */
+  margin: 30px 0;
+  /* Add margin for spacing */
+  width: 120px;
+}
+
+section.inspiration ul li::after {
+  font-family: 'Material Icons';
+  content: "\e5e1";
+  -webkit-font-feature-settings: 'liga';
+  color: #3C0000;
+  font-size: 26px;
+  top: 0px;
+  font-weight: 900;
+  left: 0;
+  position: absolute;
+}
+
+section.inspiration .section-btn {
+  @apply mt-[40px]
+}
+
+section.inspiration ul li {
+  font-size: 26px;
+  color: #4A4A4A;
+  /* line-height: 1.7; */
+  padding-left: 40px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/*marchendise*/
+section.marchendise hr {
+  display: none;
+}
+
+section.marchendise ul li::after {
+ 
+  content: "";
+  -webkit-font-feature-settings: 'liga';
+  color: #3C0000;
+  font-size: 26px;
+  top: 10px;
+  font-weight: 900;
+  left: 0;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #000;
+}
+section.marchendise  .imgContainer{
+  text-align: center;
+  display: flex;
+  justify-content: center ;
+}
+section.marchendise .sectionSubTitle{
+  margin-bottom: 40px !important;
+}
+section.marchendise ul li {
+  font-size: 18px;
+  color: #4A4A4A;
+  /* line-height: 1.7; */
+  padding-left: 40px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.counter .card-body{
+  text-align: center;
+}
+.counter .card-body  p{
+  font-size: 20px;
+  font-weight: 600;
+}
+.counter .card-body h3{
+  width: 100%;
+  margin: 20px auto;
+  font-weight: 500;
+  font-size: 16px;
 }

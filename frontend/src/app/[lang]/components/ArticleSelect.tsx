@@ -1,16 +1,26 @@
 import Link from "next/link";
 
-interface Category {
+interface articleCategory {
   id: number;
   attributes: {
-    name: string;
+    categoryName: string;
+    categoryIcon: Picture;
     slug: string;
     articles: {
       data: Array<{}>;
     };
   };
 }
-
+interface Picture {
+  data: {
+    id: string;
+    attributes: {
+      url: string;
+      name: string;
+      alternativeText: string;
+    };
+  };
+}
 interface Article {
   id: number;
   attributes: {
@@ -26,35 +36,34 @@ function selectedFilter(current: string, selected: string) {
 }
 
 export default function ArticleSelect({
-  categories,
+  articleCategories,
   articles,
   params,
 }: {
-  categories: Category[];
+  articleCategories: articleCategory[];
   articles: Article[];
   params: {
     slug: string;
-    category: string;
+    articleCategory: string;
   };
 }) {
-
   return (
     <div className="p-4 rounded-lg dark:bg-gray-900 min-h-[365px] relative">
-      <h4 className="text-xl font-semibold">Browse By Category</h4>
+      <h4 className="text-xl font-semibold">Browse By articleCategory</h4>
 
       <div>
         <div className="flex flex-wrap py-6 space-x-2 dark:border-gray-400">
-          {categories.map((category: Category) => {
-            if (category.attributes.articles.data.length === 0) return null;
+          {articleCategories.map((articleCategory: articleCategory) => {
+            if (articleCategory.attributes.articles.data.length === 0) return null;
             return (
               <Link
-                href={`/blog/${category.attributes.slug}`}
+                href={`/blog/${articleCategory.attributes.slug}`}
                 className={selectedFilter(
-                  category.attributes.slug,
-                  params.category
+                  articleCategory.attributes.slug,
+                  params.articleCategory
                 )}
               >
-                #{category.attributes.name}
+                #{articleCategory.attributes.categoryName}
               </Link>
             );
           })}
@@ -71,7 +80,7 @@ export default function ArticleSelect({
                 <li>
                   <Link
                     rel="noopener noreferrer"
-                    href={`/blog/${params.category}/${article.attributes.slug}`}
+                    href={`/blog/${params.articleCategory}/${article.attributes.slug}`}
                     className={`${
                       params.slug === article.attributes.slug &&
                       "text-violet-400"

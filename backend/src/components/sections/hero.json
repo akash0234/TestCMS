@@ -10,11 +10,11 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "description": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "picture": {
       "type": "media",

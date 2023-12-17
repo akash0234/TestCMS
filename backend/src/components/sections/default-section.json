@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_sections_default_sections",
+  "info": {
+    "displayName": "DefaultSection",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sectionClass": {
+      "type": "string"
+    },
+    "sectionTitle": {
+      "type": "string"
+    },
+    "sectionSubtitle": {
+      "type": "string"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "defaultsectionContent": {
+      "type": "richtext"
+    },
+    "isReversed": {
+      "type": "boolean"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.button-link"
+    }
+  }
+}

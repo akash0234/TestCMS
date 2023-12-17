@@ -28,6 +28,13 @@ const populate = {
           },
         },
       },
+      counter: {
+        populate: {
+          picture: {
+            fields: ["url", "alternativeText", "caption", "width", "height"],
+          },
+        },
+      },
       plans: {
         populate: ["product_features"],
       },

@@ -4,16 +4,25 @@ import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
 import Email from "../components/Email";
 import Cta from "../components/Cta";
+import DefaultSection from "../components/DefaultSection";
+import Counter from "../components/Counter";
 
 export function sectionRenderer(section: any, index: number) {
-  console.log(section)
+  
   switch (section.__component) {
     case "sections.hero":
       return <Hero key={index} data={section} />;
     case "sections.features":
       return <Features key={index} data={section} />;
+    case "sections.counters":
+      console.log(section);
+      return <Counter key={index} data={section} />;
+    case "sections.default-section":
+     
+      return <DefaultSection key={index} data={section} />;
     case "sections.testimonials-group":
       return <Testimonials key={index} data={section} />;
+
     case "sections.pricing":
       return <Pricing key={index} data={section} />;
     case "sections.lead-form":

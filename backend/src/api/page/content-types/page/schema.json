@@ -39,7 +39,9 @@
         "sections.lead-form",
         "sections.features",
         "sections.heading",
-        "sections.call-to-action"
+        "sections.call-to-action",
+        "sections.default-section",
+        "sections.counters"
       ],
       "pluginOptions": {
         "i18n": {

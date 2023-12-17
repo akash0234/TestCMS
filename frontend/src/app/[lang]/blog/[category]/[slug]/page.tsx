@@ -10,7 +10,7 @@ async function getPostBySlug(slug: string) {
         populate: {
             cover: { fields: ['url'] },
             authorsBio: { populate: '*' },
-            category: { fields: ['name'] },
+            articleCategory: { fields: ['name'] },
             blocks: { 
                 populate: {
                     '__component': '*', 
@@ -38,6 +38,7 @@ async function getMetaData(slug: string) {
     };
     const options = { headers: { Authorization: `Bearer ${token}` } };
     const response = await fetchAPI(path, urlParamsObject, options);
+
     return response.data;
 }
 
@@ -65,19 +66,20 @@ export async function generateStaticParams() {
     const articleResponse = await fetchAPI(
         path,
         {
-            populate: ['category'],
+            populate: ['articleCategory'],
         },
         options
     );
-
+       
     return articleResponse.data.map(
         (article: {
             attributes: {
                 slug: string;
-                category: {
+                articleCategory: {
                     slug: string;
                 };
             };
-        }) => ({ slug: article.attributes.slug, category: article.attributes.slug })
+        }) => ({ slug: article.attributes.slug, articleCategory: article.attributes.articleCategory })
+        
     );
 }
